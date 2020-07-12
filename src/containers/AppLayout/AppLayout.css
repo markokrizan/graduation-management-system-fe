@@ -1,0 +1,17 @@
+aside {
+    border-right: 2px solid black;
+    padding-right: 0px !important;
+}
+
+main {
+    height: 100% !important;
+    padding: 1em;
+}
+
+.main-app-area{
+    height: 100% !important;
+}
+
+.public-area{
+    padding: 1em;
+}
