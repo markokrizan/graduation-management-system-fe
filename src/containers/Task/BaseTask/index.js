@@ -3,7 +3,7 @@ import { compose } from 'redux';
 
 import BaseTask from './BaseTask';
 
-import { getNextTask } from '../../../store/actions/TaskActions';
+import { getNextTask, completeTask } from '../../../store/actions/TaskActions';
 
 const mapStateToProps = state => {
     return {
@@ -12,7 +12,8 @@ const mapStateToProps = state => {
 };
   
 const mapDispatchToProps = {
-    getNextTask
+    getNextTask,
+    completeTask
 };
 
 const withConnect = connect(

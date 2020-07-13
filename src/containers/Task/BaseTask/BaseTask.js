@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, createElement } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
@@ -15,7 +14,11 @@ const useStyles = makeStyles({
     },
   });
 
-export default function BaseTask({ getNextTask, currentTask }) {
+const taskComponents = {
+    'ExampleTask' : ExampleTask
+}
+
+export default function BaseTask({ getNextTask, completeTask, currentTask }) {
     const classes = useStyles();
 
     useEffect(() => {
@@ -26,11 +29,10 @@ export default function BaseTask({ getNextTask, currentTask }) {
         return null;
     }
 
-    const taskComponents = {
-        'ExampleTask' : <ExampleTask task={currentTask}/>
-    }
-    
-    const Task = taskComponents[currentTask.name];
+    const Task = createElement(taskComponents[currentTask.name], {
+        currentTask,
+        completeTask
+    });
 
     return (
         <Card className={classes.root}>
@@ -38,7 +40,11 @@ export default function BaseTask({ getNextTask, currentTask }) {
                 <Typography gutterBottom variant="h5" component="h2">
                     { currentTask.name }
                 </Typography>
-                {Task}
+                {taskComponents[currentTask.name] ? Task : (
+                     <Typography gutterBottom variant="p">
+                        {"Task component missing"}
+                    </Typography>
+                )}
             </CardContent>
         </Card>
     );    
