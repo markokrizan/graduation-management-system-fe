@@ -35,9 +35,9 @@ export default function TaskForm({ taskFormFields, submitAction }) {
                 variant="outlined"
                 margin="normal"
                 fullWidth
-                id={taskFormField.label}
+                id={taskFormField.id}
                 label={taskFormField.label}
-                name={taskFormField.label}
+                name={taskFormField.id}
             />    
         ));
     }
@@ -56,13 +56,13 @@ export default function TaskForm({ taskFormFields, submitAction }) {
                         <div className={classes.form}>
                             {renderFields()}
                             <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                            className={classes.submit}
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                color="primary"
+                                className={classes.submit}
                             >
-                            Submit
+                                Submit
                             </Button>
                         </div>
                     </div>

@@ -29,7 +29,7 @@ const createSchemaFromTaskFormConfig = taskFormFields => {
 
   taskFormFields.forEach(taskFormField => {
     Object.assign(schema, getValidationConstraint({
-      fieldName : taskFormField.label,
+      fieldName : taskFormField.id,
       fieldType : taskFormField.typeName,
       fieldConstraints : taskFormField.validationConstraints.map(constraint => {
         return {
