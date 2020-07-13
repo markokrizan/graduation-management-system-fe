@@ -34,7 +34,9 @@ class HttpService {
 
   handleErrorResponse(error) {
     store.dispatch(setLoadingStatus(false))
-    
+
+    alert(error && error.response && error.response.message);
+
     //TODO if needed
 
     //const { status } = error.response;
